@@ -1,0 +1,115 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ *= require selectize
+ *= require selectize.default
+ */
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+html{
+  width: 100vw;
+  overflow-x: hidden;
+}
+body{
+  width: 100%;
+  margin: 0;
+
+  a{
+    display: block;
+    text-decoration: none;
+
+    &:hover{
+      background: transparent;
+      cursor: pointer;
+      color: #4f4f4f;
+    }
+  }
+
+  h1,h2,h3,h4,h5,h6,p,a{
+    margin: 0;
+    font-family: 'Helvetica Neue';
+    font-weight: 300;
+  }
+
+  div{
+    box-sizing: border-box;
+  }
+}
+.main-container{
+  width: 100%;
+  min-height: 100vh;
+  display: table;
+
+  .main-nav{
+    width: 300px;
+    height: 100%;
+    background: #263238;
+    padding: 100px 30px;
+    display: table-cell;
+
+    .user-info{
+      color: white;
+      display: table;
+
+      p{
+        float: left;
+        font-size: 1.2em;
+      }
+
+      .user-avatar{
+        width: 60px;
+        height: 60px;
+        line-height: 60px;
+        color: #5ea600;
+        font-size: 25px;
+        background: #E0E0E0;
+        border-radius: 50px;
+        text-align: center;
+        margin-right: 10px;
+      }
+
+      .user-name{
+        padding: 10px 5px;
+        line-height: 20px;
+      }
+    }
+
+    .menu-container{
+      padding: 50px 10px;
+
+      .nav{
+
+        a{
+          color: white;
+          font-size: 1.2em;
+          padding-bottom: 20px;
+
+          i{
+            margin-right: 10px;
+            font-size: 1.4em;
+          }
+        }
+      }
+    }
+  }
+  .main-content{
+    width: calc(100vw - 300px);
+    height: 100%;
+    background: #F7F7F7;
+    padding: 50px;
+    display: table-cell;
+    vertical-align: top;
+  }
+}
