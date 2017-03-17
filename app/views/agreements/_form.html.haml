@@ -10,10 +10,6 @@
     = f.label :number
     = f.text_field :number
   .field
-    = f.fields_for :addresses do |address|
-      = address.text_field :street
-      = address.text_field :city
-  .field
     = f.association :company, :collection => Company.all, :label_method => :name, :value_method => :id
   .actions
     = f.submit 'Save'

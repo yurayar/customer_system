@@ -19,7 +19,7 @@
         %th
 
     %tbody
-      - @addresses.limit(50).each do |address|
+      - @addresses.order('id desc').limit(350).each do |address|
         %tr
           %td= address.street
           %td= address.city

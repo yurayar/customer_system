@@ -12,7 +12,7 @@
       %th
 
   %tbody
-    - @agreements.limit(50).each do |agreement|
+    - @agreements.order('id desc').limit(300).each do |agreement|
       %tr
         %td= agreement.number
         %td= agreement.company.name
