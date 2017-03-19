@@ -32,10 +32,10 @@ class AgreementsController < ApplicationController
 
     respond_to do |format|
       if @agreement.save
-        format.html { redirect_to @agreement, notice: @addresses }
+        format.html { redirect_to agreements_path, notice: @addresses }
         format.json { render :show, status: :created, location: @agreement }
       else
-        format.html { render :new }
+        format.html { redirect_to agreements_path }
         format.json { render json: @agreement.errors, status: :unprocessable_entity }
       end
     end

@@ -4,7 +4,7 @@ Rails.application.routes.draw do
       get '/' => 'api_agreements#show'
     end
   end
-  root to: 'dashboard#index'
+  root to: 'agreements#index'
   resources :addresses
   resources :agreements
   resources :companies
