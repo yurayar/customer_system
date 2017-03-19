@@ -103,7 +103,7 @@
 }
 .agreement-form-wrapper{
   position: fixed;
-  top: 200px;
+  top: 100px;
   left: calc((100vw - 350px)/2);
   z-index: 1000;
   display: none;
@@ -178,6 +178,14 @@
             border-color: #607D8B;
             color: #607D8B;
           }
+        }
+      }
+
+      .address-section{
+        p{
+          font-size: 1.3em;
+          margin-bottom: 20px;
+          font-weight: 400;
         }
       }
     }

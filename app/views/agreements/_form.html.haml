@@ -16,5 +16,14 @@
       .field
         = f.label 'Укажите компанию'
         = f.association :company, :collection => Company.all, :label_method => :name, :value_method => :id, label: false
+      .address-section
+        %pДанные по объекту:
+        = f.fields_for :addresses, Address.new do |address|
+          .field
+            = f.label 'Введите улицу и номер дома'
+            = address.text_field :street
+          .field
+            = f.label 'Введите город'
+            = address.text_field :city
       .actions
         = f.submit 'Сохранить'
