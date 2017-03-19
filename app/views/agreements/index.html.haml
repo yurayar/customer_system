@@ -1,25 +1,27 @@
-%h1
-  Список договоров:
-  = @agreements.count
-
-%table
-  %thead
-    %tr
-      %th Number
-      %th Company
-      %th
-      %th
-      %th
-
-  %tbody
-    - @agreements.order('id desc').limit(300).each do |agreement|
+.agreements-container
+  .agreements-header
+    %h1
+      Все договора:
+      = @agreements.count
+    %p(class="create-link")Добавить договор
+  .search-form
+    = search_form_for @q do |f|
+      = f.select :number_cont, options_from_collection_for_select(Agreement.all, 'number', 'number'), {}, {class: 'select-agreement'}
+  %table
+    %thead
       %tr
-        %td= agreement.number
-        %td= agreement.company.name
-        %td= link_to 'Show', agreement
-        %td= link_to 'Edit', edit_agreement_path(agreement)
-        %td= link_to 'Destroy', agreement, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %th Номер
+        %th Компания
+        %th(colspan="3")
 
-%br
-
-= link_to 'New Agreement', new_agreement_path
+    %tbody
+      - @agreements.order('id desc').limit(50).each do |agreement|
+        %tr
+          %td= agreement.number
+          %td= agreement.company.name
+          %td= link_to 'Показать', agreement
+          %td= link_to 'Редактировать', edit_agreement_path(agreement)
+          %td= link_to 'Удалить', agreement, :method => :delete, :data => { :confirm => 'Are you sure?' }
+.agreement-form-overlay(class="animated")
+.agreement-form-wrapper(class="animated")
+  = render 'agreements/form'

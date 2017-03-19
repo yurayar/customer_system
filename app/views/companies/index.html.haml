@@ -1,21 +1,28 @@
-%h1 Listing companies
+.companies-container
+  .companies-header
+    %h1Все компании
+    %p(class="create-link")Добавить компанию
+  .search-form
+    = search_form_for @q do |f|
+      = f.select :name_cont, options_from_collection_for_select(Company.all, 'name', 'name'), {}, {class: 'select-company'}
+  .companies-content
+    %table
+      %thead
+        %tr
+          %th Название
+          %th Количество договоров
+          %th
+          %th
+          %th
 
-%table
-  %thead
-    %tr
-      %th Name
-      %th
-      %th
-      %th
-
-  %tbody
-    - @companies.each do |company|
-      %tr
-        %td= company.name
-        %td= link_to 'Show', company
-        %td= link_to 'Edit', edit_company_path(company)
-        %td= link_to 'Destroy', company, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Company', new_company_path
+      %tbody
+        - @companies.each do |company|
+          %tr
+            %td= company.name
+            %td= company.agreements.count
+            %td= link_to 'Показать', company
+            %td= link_to 'Редактировать', edit_company_path(company)
+            %td= link_to 'Удалить', company, :method => :delete, :data => { :confirm => 'Are you sure?' }
+.company-form-overlay(class="animated")
+.company-form-wrapper(class="animated")
+  = render 'companies/form'

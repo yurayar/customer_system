@@ -7,6 +7,7 @@ class AddressesController < ApplicationController
     @addresses = Address.all
     @q = Address.ransack(params[:q])
     @addresses = @q.result(distinct: true)
+    @address = Address.new
   end
 
   # GET /addresses/1

@@ -1,33 +1,29 @@
-%h1
-  Список объектов:
-  = @addresses.count
-  объекта
-
 .addresses-container
-  = search_form_for @q do |f|
-    = f.label :street_cont
-    = f.select :street_cont, options_from_collection_for_select(Address.all, 'street', 'street'), {}, {class: 'select-address'}
-    = f.submit
+  .addresses-header
+    %h1
+      Все обьекты:
+      = @addresses.count
+    %p(class="create-link")Добавить объект
+  .search-form
+    = search_form_for @q do |f|
+      = f.select :street_cont, options_from_collection_for_select(Address.all, 'street', 'street'), {}, {class: 'select-address'}
   %table
     %thead
       %tr
-        %thУлица
         %thГород
-        %thДоговор
-        %th
-        %th
-        %th
+        %thУлица
+        %thНомер договора
+        %th(colspan="3")
 
     %tbody
-      - @addresses.order('id desc').limit(350).each do |address|
+      - @addresses.order('id desc').limit(50).each do |address|
         %tr
-          %td= address.street
           %td= address.city
+          %td= address.street
           %td= address.agreement.number
-          %td= link_to 'Show', address
-          %td= link_to 'Edit', edit_address_path(address)
-          %td= link_to 'Destroy', address, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-  %br
-
-  = link_to 'New Address', new_address_path
+          %td(class="action")= link_to raw('<i class="fa fa-folder-open" aria-hidden="true"></i>'), address
+          %td(class="action")= link_to raw('<i class="fa fa-cog" aria-hidden="true"></i>'), edit_address_path(address)
+          %td(class="action")= link_to raw('<i class="fa fa-trash" aria-hidden="true"></i>'), address, :method => :delete, :data => { :confirm => 'Are you sure?' }
+.address-form-overlay(class="animated")
+.address-form-wrapper(class="animated")
+  = render 'addresses/form'

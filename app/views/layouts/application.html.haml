@@ -3,8 +3,8 @@
   %head
     %title KobraClients
     = csrf_meta_tags
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
   %body
     .main-container
       - if current_user
@@ -18,9 +18,13 @@
               = current_user.surname
           .menu-container
             .nav
-              = link_to raw('<i class="fa fa-building" aria-hidden="true"></i>Компании'), companies_path
-              = link_to raw('<i class="fa fa-book" aria-hidden="true"></i>Договора'), agreements_path
-              = link_to raw('<i class="fa fa-briefcase" aria-hidden="true"></i>Объекты'), addresses_path
-              = link_to(raw('<i class="fa fa-sign-out" aria-hidden="true"></i>Выйти'), destroy_user_session_path, :method => :delete)
+              .nav-row
+                = link_to raw('<i class="fa fa-building" aria-hidden="true"></i>Компании'), companies_path
+              .nav-row
+                = link_to raw('<i class="fa fa-book" aria-hidden="true"></i>Договора'), agreements_path
+              .nav-row
+                = link_to raw('<i class="fa fa-briefcase" aria-hidden="true"></i>Объекты'), addresses_path
+              .nav-row
+                = link_to(raw('<i class="fa fa-sign-out" aria-hidden="true"></i>Выйти'), destroy_user_session_path, :method => :delete)
       .main-content
         = yield

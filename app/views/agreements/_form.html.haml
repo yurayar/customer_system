@@ -1,15 +1,20 @@
-= simple_form_for @agreement do |f|
-  - if @agreement.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@agreement.errors.count, "error")} prohibited this agreement from being saved:"
-      %ul
-        - @agreement.errors.full_messages.each do |msg|
-          %li= msg
+.agreement-form
+  .form-header
+    %pНовый договор
+  .form-body
+    = simple_form_for @agreement do |f|
+      - if @agreement.errors.any?
+        #error_explanation
+          %h2= "#{pluralize(@agreement.errors.count, "error")} prohibited this agreement from being saved:"
+          %ul
+            - @agreement.errors.full_messages.each do |msg|
+              %li= msg
 
-  .field
-    = f.label :number
-    = f.text_field :number
-  .field
-    = f.association :company, :collection => Company.all, :label_method => :name, :value_method => :id
-  .actions
-    = f.submit 'Save'
+      .field
+        = f.label 'Введите номер договора'
+        = f.text_field :number
+      .field
+        = f.label 'Укажите компанию'
+        = f.association :company, :collection => Company.all, :label_method => :name, :value_method => :id, label: false
+      .actions
+        = f.submit 'Сохранить'
