@@ -73,6 +73,15 @@ $(document).ready(function(e) {
         }
     });
 
+    $('.users-container .select-user').selectize({
+        placeholder: 'Поиск пользователя',
+        allowEmptyOption: true,
+        items: null,
+        onChange: function(){
+            $('form.user_search').submit();
+        }
+    });
+
     $('.agreements-container .create-link').click(function(){
         showAgreementForm('.agreement-form-overlay', '.agreement-form-wrapper');
     });
@@ -95,5 +104,13 @@ $(document).ready(function(e) {
 
     $('.company-form-overlay').click(function(){
         hideAgreementForm('.company-form-overlay', '.company-form-wrapper');
+    });
+
+    $('.users-container .create-link').click(function(){
+        showAgreementForm('.user-form-overlay', '.user-form-wrapper');
+    });
+
+    $('.user-form-overlay').click(function(){
+        hideAgreementForm('.user-form-overlay', '.user-form-wrapper');
     });
 });

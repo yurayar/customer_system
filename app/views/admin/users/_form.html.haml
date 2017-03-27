@@ -1,0 +1,25 @@
+.user-form
+  .form-header
+    %pНовый пользователь
+  .form-body
+    = simple_form_for @user, remote: true do |f|
+      - if @user.errors.any?
+        #error_explanation
+          %h2= "#{pluralize(@user.errors.count, "error")} prohibited this agreement from being saved:"
+          %ul
+            - @user.errors.full_messages.each do |msg|
+              %li= msg
+      .field
+        = f.label 'Укажите имя'
+        = f.text_field :name
+      .field
+        = f.label 'Укажите фамилию'
+        = f.text_field :surname
+      .field
+        = f.label 'Укажите e-mail'
+        = f.text_field :email
+      .field
+        = f.label 'Укажите пароль'
+        = f.text_field :password, type: 'password'
+      .actions
+        = f.submit 'Сохранить'

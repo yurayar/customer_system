@@ -1,8 +1,5 @@
-// Place all the styles related to the Companies controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-.companies-container{
-  .companies-header{
+.users-container{
+  .users-header{
     display: table;
     h1{
       line-height: 35px;
@@ -28,24 +25,26 @@
       }
     }
   }
-  .search-form {
+
+  .search-form{
     width: 500px;
     padding: 35px 0;
 
-    .select-company {
-      .selectize-input {
+    .select-user{
+      .selectize-input{
         line-height: 28px;
         padding: 8px 20px;
 
-        input {
+        input{
           font-size: 15px;
         }
       }
     }
   }
 
-  .companies-content {
+  .users-content{
     table {
+      width: auto;
       border-spacing: 0;
       border: 1px solid #E7E7E7;
       thead {
@@ -63,26 +62,21 @@
         background: white;
         td {
           line-height: 50px;
-          padding: 0 0 0 30px;
-          text-align: left;
+          padding: 0 30px;
+          text-align: center;
+          color: #37474F;
+          font-weight: 400;
           border-bottom: 1px solid #edeef0;
 
-          a{
+          a {
             font-size: 1.1em;
             font-weight: 400;
           }
 
           i {
-            font-size: 1.2em;
+            font-size: 2.5em;
             color: #455A64;
-          }
-
-          &.action {
-            padding: 0 10px;
-          }
-
-          &:last-child {
-            padding-right: 30px;
+            vertical-align: middle;
           }
         }
 
@@ -93,7 +87,7 @@
     }
   }
 }
-.company-form-overlay{
+.user-form-overlay{
   width: 100vw;
   height: 100vh;
   background: rgba(0, 0, 0, 0.65);
@@ -108,9 +102,9 @@
     animation-duration: 0.5s;
   }
 }
-.company-form-wrapper{
+.user-form-wrapper{
   position: fixed;
-  top: 200px;
+  top: 130px;
   left: calc((100vw - 350px)/2);
   z-index: 1000;
   display: none;
@@ -119,7 +113,7 @@
     animation-duration: 0.5s;
   }
 }
-.company-form{
+.user-form{
   width: 350px;
   background: white;
   border-radius: 3px;
@@ -188,16 +182,5 @@
         }
       }
     }
-  }
-}
-.company-edit-form{
-  .link{
-    line-height: 30px;
-    color: white;
-    background: #607D8B;
-    border-radius: 3px;
-    margin-bottom: 50px;
-    padding: 0 30px;
-    display: inline-block;
   }
 }

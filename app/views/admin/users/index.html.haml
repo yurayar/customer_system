@@ -1,0 +1,37 @@
+.users-container
+  .users-header
+    %h1Все пользователи
+    %p(class="create-link")Добавить пользователя
+  .search-form
+    = search_form_for @q do |f|
+      = f.select :id_eq, options_from_collection_for_select(User.all, :id, :full_name), {}, {class: 'select-user'}
+  .users-content
+    %table
+      %thead
+        %tr
+          %th Номер
+          %th Имя
+          %th Фамилия
+          %th E-mail
+          %th Администратор
+          %th
+          %th
+
+      %tbody
+        - @users.each do |user|
+          %tr
+            %td= user.id
+            %td= user.name
+            %td= user.surname
+            %td= user.email
+            %td
+              - if user.admin?
+                %i(class="fa fa-toggle-on" aria-hidden="true")
+              - else
+                %i(class="fa fa-toggle-off" aria-hidden="true")
+            %td= link_to 'Редактировать', edit_user_path(user), remote: true
+            %td= link_to 'Удалить', user, :method => :delete, :data => { :confirm => 'Are you sure?' }
+.user-form-overlay(class="animated")
+.user-form-wrapper(class="animated")
+  = render 'form'
+.edit-user

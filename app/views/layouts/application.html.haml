@@ -24,6 +24,9 @@
                 = link_to raw('<i class="fa fa-book" aria-hidden="true"></i>Договора'), agreements_path
               .nav-row
                 = link_to raw('<i class="fa fa-briefcase" aria-hidden="true"></i>Объекты'), addresses_path
+              - if current_user.admin?
+                .nav-row
+                  = link_to raw('<i class="fa fa-user" aria-hidden="true"></i>Пользователи'), '/admin/users'
               .nav-row
                 = link_to(raw('<i class="fa fa-sign-out" aria-hidden="true"></i>Выйти'), destroy_user_session_path, :method => :delete)
       .main-content
